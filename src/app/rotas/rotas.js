@@ -25,7 +25,7 @@ module.exports = (app) => {
                 .then(livros => response.marko(
                     require('../views/livros/lista/lista.marko'),
                     {
-                        livros: livros
+                        livros
                     }
                 )
             ).catch(erro => {
@@ -33,4 +33,17 @@ module.exports = (app) => {
             });
         }
     );
+
+    app.get(
+        '/livros/form', function(request, response) {
+
+            response.marko(require('../views/livros/form/formulario.marko'));
+        }
+    );
+
+    app.post('/livros', function(request, response) {
+            console.log(request.body);
+        }
+    );
+
 }
