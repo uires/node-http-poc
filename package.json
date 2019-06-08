@@ -1,0 +1,23 @@
+{
+  "name": "casadocodigo",
+  "version": "1.0.0",
+  "description": "Casa do Código, livraria",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uires/node-http-poc.git"
+  },
+  "author": "Uíres Sousa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uires/node-http-poc/issues"
+  },
+  "homepage": "https://github.com/uires/node-http-poc#readme",
+  "dependencies": {
+    "express": "4.16.3"
+  }
+}
