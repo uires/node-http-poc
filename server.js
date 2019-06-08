@@ -1,11 +1,12 @@
-const http = require('http');
+const express = require('express');
+const app = express();
+app.listen(3000, function () {
 
-const servidor = http.createServer(function(request, response) {
-    
-    let html;
-    if(request.url === '/') {
+    console.log(`Servidor rodando na porta 3000`);
+});
 
-        html = 
+app.get('/', function (request, response) {
+    response.send(
         `
             <html>
                 <head>
@@ -15,19 +16,21 @@ const servidor = http.createServer(function(request, response) {
                     <h1>Casa do Código</h1>
                 </body>
             </html>
-        `;
-    } else if(request.url == '/livros') {
-        html = `
-        <html>
-            <head>
-                <meta charset="UTF-8" />
-            </head>
-            <body>
-                <h1>Listagem de Livros</h1>
-            </body>
-        </html>
-    `;
-    }
-    response.end(html);
+        `
+    );
 });
-servidor.listen(3000);
+
+app.get('/livros', function (request, response) {
+    response.send(
+        `
+            <html>
+                <head>
+                    <meta charset="UTF-8" />
+                </head>
+                <body>
+                    <h1>Listagem Livros</h1>
+                </body>
+            </html>
+        `
+    );
+});
