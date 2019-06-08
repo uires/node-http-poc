@@ -18,18 +18,19 @@ module.exports = (app) => {
         );
     });
 
-    app.get('/livros', function (request, response) {
-
-        const livrodao = new LivroDAO(database);
-        livrodao.lista(function (erro, resultados) {
-
-            response.marko(
-                require('../views/livros/lista/lista.marko'),
+    app.get(
+        '/livros', function (request, response) {
+            const livrodao = new LivroDAO(database);
+            livrodao.lista()
+                .then(livros => response.marko(
+                    require('../views/livros/lista/lista.marko'),
                     {
-                        livros: resultados
+                        livros: livros
                     }
-                );
-            }
-        );
-    });
+                )
+            ).catch(erro => {
+                console.log(erro);
+            });
+        }
+    );
 }
