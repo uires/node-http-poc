@@ -17,6 +17,10 @@ class LivroDAO {
             );
         });
     }
+
+    adiciona() {
+        
+    }
 }
 
 module.exports = LivroDAO;

@@ -28,22 +28,25 @@ module.exports = (app) => {
                         livros
                     }
                 )
-            ).catch(erro => {
-                console.log(erro);
-            });
+                ).catch(erro => {
+                    console.log(erro);
+                });
         }
     );
 
     app.get(
-        '/livros/form', function(request, response) {
+        '/livros/form', function (request, response) {
 
             response.marko(require('../views/livros/form/formulario.marko'));
         }
     );
 
-    app.post('/livros', function(request, response) {
-            console.log(request.body);
-        }
-    );
+    app.post('/livros', function (request, response) {
+        
+        const livrodao = new LivroDAO(database);
+        livrodao.adiciona(request.body)
+            .then()
+            .catch(erro => { console.log(erro); });
+    });
 
 }
