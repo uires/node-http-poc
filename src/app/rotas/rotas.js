@@ -41,12 +41,42 @@ module.exports = (app) => {
         }
     );
 
-    app.post('/livros', function (request, response) {
+    app.post(
+        '/livros', function (request, response) {
         
-        const livrodao = new LivroDAO(database);
-        livrodao.adiciona(request.body)
-            .then()
-            .catch(erro => { console.log(erro); });
-    });
+            const livrodao = new LivroDAO(database);
+            livrodao.adiciona(request.body)
+                .then(response.redirect('/livros'))
+                .catch(erro => { console.log(erro); });
+        }
+    );
+    
+    /*
+    app.get(
+        '/livro/{id}', function(request, response) {
+            const livrodao = new LivroDAO(databse);
+            livrodao.buscar(request.body)
+                .then()
+                .catch(erro => { console.log(erro); });
+        }
+    );
 
+    app.remove(
+        '/livro/{id}', function(request, response) {
+            const livrodao = new LivroDAO(databse);
+            livrodao.remove(request.body)
+                .then()
+                .catch(erro => { console.log(erro); });
+        }
+    );
+
+    app.put(
+        '/livro/{id}', function(request, response) {
+            const livrodao = new LivroDAO(database);
+            livrodao.editar(request.body)
+                .then(response.redirect('/livros'))
+                .catch(error => { console.log(error) });
+        }
+    )
+    */
 }
